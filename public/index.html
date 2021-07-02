@@ -1,25 +1,22 @@
 <!DOCTYPE html>
-<html>
-<body>
+<html lang="en">
+  <head>
+    <title>WebAssembly / AssemblyScript Demo</title>
+  </head>
 
-<h1>WebAssembly 2</h1>
+  <body>
+    <h1>WebAssembly 2</h1>
 
-<script>
-    const imports = {
-        module: {},
-        env: {
-            abort(_msg, _file, line, column) {
-            console.error("abort called at main.ts:" + line + ":" + column);
-            }
-        },
-    }
-    WebAssembly.instantiateStreaming(fetch('./build/optimized.wasm'), imports)
-        .then(results => {
-            const exports = results.instance.exports
-            console.log(`add (1 + 2): ${exports.add(1, 2)}`)
-            console.log(`subtract (10 - 5): ${exports.subtract(10, 5)}`)
-            console.log(`multiply (5 * 3): ${exports.multiply(5, 3)}`)
-        });
-</script>
-</body>
+    <script>
+      const imports = {}
+
+      WebAssembly.instantiateStreaming(fetch('./build/optimized.wasm'), imports)
+          .then(results => {
+              const exports = results.instance.exports
+              console.log(`add (1 + 2): ${exports.add(1, 2)}`)
+              console.log(`subtract (10 - 5): ${exports.subtract(10, 5)}`)
+              console.log(`multiply (5 * 3): ${exports.multiply(5, 3)}`)
+          });
+    </script>
+  </body>
 </html>
