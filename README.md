@@ -1,4 +1,4 @@
-# Assembly Script Experimentation
+# AssemblyScript Experimentation
 
 Trailing WebAssembly using AssemblyScript.
 
